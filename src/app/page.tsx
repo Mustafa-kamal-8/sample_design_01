@@ -5,7 +5,6 @@ import { Button } from "@/src/components/ui/button";
 import { Card, CardContent } from "@/src/components/ui/card";
 import { Star } from "lucide-react";
 import Footer from "@/src/components/footer";
-import { Head } from "react-day-picker";
 import { getCourses } from "../api/course";
 import { useEffect } from "react";
 
@@ -90,50 +89,58 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-white text-black dark:bg-zinc-900 dark:text-white">
+    <div >
       {/* Hero Section */}
-      <section className="bg-muted/30 dark:bg-muted/10">
-        <div className="container px-4 py-12 md:py-24">
-          <div className="grid gap-6 md:grid-cols-2 items-center">
-            <div className="flex flex-col gap-4">
-              <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-center md:text-left">
-                Learn, Interact, and Grow
-                <br />
-                <span className="text-primary">Live & On-Demand Classes</span>
-                <br />
-                for Every Learner
-              </h1>
-              <p className="text-muted-foreground text-lg text-center md:text-left">
-                Join expert-led live classes, download recordings at your
-                convenience, and engage in insightful discussions with fellow
-                learners. Take your learning beyond the classroom!
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center md:justify-start">
-                <Button size="lg" asChild className="w-full sm:w-auto">
-                  <Link href="/live-classes">Book a Live Class</Link>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  asChild
-                  className="w-full sm:w-auto"
-                >
-                  <Link href="/recorded-classes">Explore Recorded Classes</Link>
-                </Button>
-              </div>
-            </div>
-            <div className="hidden md:block">
-              <Image
-                src="/placeholder.svg?height=150&width=150"
-                alt="Student learning online"
-                width={600}
-                height={400}
-                className="rounded-lg object-cover"
-              />
-            </div>
-          </div>
+ <section className="bg-background">
+  <div className="container mx-auto px-4 py-12 md:py-24">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      {/* Text Section */}
+      <div className="flex flex-col gap-6 text-center md:text-left">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight">
+          Learn, Interact, and Grow
+          <br />
+          <span className="text-blue-600 dark:text-blue-400">
+            Live & On-Demand Classes
+          </span>
+          <br />
+          for Every Learner
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg">
+          Join expert-led live classes, download recordings at your convenience, and engage in insightful discussions with fellow learners. Take your learning beyond the classroom!
+        </p>
+
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <Button size="lg" asChild className="w-full sm:w-auto">
+            <Link href="/live-classes">Book a Live Class</Link>
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            asChild
+            className="w-full sm:w-auto"
+          >
+            <Link href="/recorded-classes">Explore Recorded Classes</Link>
+          </Button>
         </div>
-      </section>
+      </div>
+
+      {/* Image Section */}
+      <div className="flex justify-center md:justify-end">
+        <Image
+          src="/placeholder.svg"
+          alt="Student learning online"
+          width={600}
+          height={400}
+          className="rounded-xl object-cover w-full max-w-md"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 
       {/* How It Works Section */}
       <section className="bg-background">
@@ -404,132 +411,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* Promo Banner */}
-      {/* <section className="bg-muted/30 dark:bg-muted/10">
-        <div className="container px-4 py-8">
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-lg overflow-hidden">
-            <div className="flex flex-col md:flex-row items-center p-6">
-              <div className="md:w-2/3 text-white mb-6 md:mb-0">
-                <h2 className="text-2xl font-bold mb-2">Tech Tutor Sale</h2>
-                <p className="mb-2">Get the best deals on all the tech courses for this week</p>
-                <div className="text-3xl font-bold">Upto 40% Off</div>
-              </div>
-              <div className="md:w-1/3 flex justify-center">
-                <Image src="/placeholder.svg?height=150&width=150" alt="Sale robot mascot" width={150} height={150} />
-              </div>
-            </div>
-            <div className="bg-white dark:bg-gray-800 p-4 text-center">
-              <Button asChild>
-                <Link href="/courses">Check Out Courses</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      {/* Become a Coach Section */}
-      {/* <section className="bg-blue-500 text-white">
-        <div className="container px-4 py-12 md:py-24">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">
-              Join Our Growing Network of Experts in Therapy, HR, and Organizational Consulting
-            </h2>
-            <p className="mb-8">
-              Are you a certified therapist, human resource expert, or organizational development consultant? We're
-              looking for passionate professionals like you to join our coaching platform and empower individuals and
-              teams to grow, heal, and thrive.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" asChild>
-                <Link href="/become-coach">Become a Coach</Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-transparent border-white text-white hover:bg-white/10"
-                asChild
-              >
-                <Link href="/coach-guidelines">View Coach Guidelines</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      {/* FAQ Section */}
-      {/* <section className="bg-muted/30 dark:bg-muted/10">
-        <div className="container px-4 py-12 md:py-24">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
-              Got Questions?
-              <br />
-              We've Got Answers!
-            </h2>
-            <p className="text-muted-foreground">
-              Everything you need to know about live classes, subscriptions, and recorded lessons.
-            </p>
-          </div>
-          <div className="max-w-3xl mx-auto">
-            <div className="space-y-4">
-              <div className="bg-card rounded-lg p-4 shadow-sm">
-                <div className="flex justify-between items-center cursor-pointer">
-                  <h3 className="font-medium">How do I book a class?</h3>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-chevron-down"
-                  >
-                    <path d="m6 9 6 6 6-6" />
-                  </svg>
-                </div>
-              </div>
-              <div className="bg-card rounded-lg p-4 shadow-sm">
-                <div className="flex justify-between items-center cursor-pointer">
-                  <h3 className="font-medium">Can I cancel or reschedule a session?</h3>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-chevron-down"
-                  >
-                    <path d="m6 9 6 6 6-6" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      {/* Quiz Section */}
-      {/* <section className="bg-gray-900 text-white">
-        <div className="container px-4 py-12 md:py-24">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Participate in Weekly Quiz Competitions</h2>
-            <p className="mb-8">
-              Put your knowledge to the test with our topic-based quizzes, released every week. Whether you're brushing
-              up on last week's class or challenging yourself with new material, our quizzes are designed to sharpen
-              your skills in a fun and interactive way.
-            </p>
-            <Button size="lg" variant="secondary" asChild>
-              <Link href="/quiz-contest">Join This Week's Quiz</Link>
-            </Button>
-          </div>
-        </div>
-      </section> */}
+  
 
       {/* 1-on-1 Section */}
       <section className="bg-muted/30 dark:bg-muted/10">

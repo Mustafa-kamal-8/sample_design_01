@@ -1,98 +1,116 @@
+/* globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    /* … all your other light-mode vars … */
-  }
+/* Define CSS Variables for Light Theme */
+:root {
+  /* Main Colors */
+  --background: 0 0% 100%; /* HSL for pure white */
+  --foreground: 222.2 84% 4.9%; /* A dark blue-ish black */
 
-    html.dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    /* … all your other dark-mode vars … */
-  }
-   body {
-    @apply bg-background text-foreground;
-  }
+  /* Card Colors */
+  --card: 0 0% 100%; /* White card background */
+  --card-foreground: 222.2 84% 4.9%; /* Text on white cards */
 
-  * {
-    @apply border-border;
-  }
+  /* Popover Colors */
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 9%;
 
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
+  /* Primary Colors (Buttons, Main accents) */
+  --primary: 240 5.9% 10%; /* Dark grey/black for primary */
+  --primary-foreground: 0 0% 100%; /* White text on primary */
+  --primary-hover: 222.2 47.4% 20%; /* Adjusted for primary button hover (based on previous definition) */
 
-    /* Sidebar variables */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+  /* Secondary Colors */
+  --secondary: 210 40% 96.1%; /* Light grey */
+  --secondary-foreground: 222.2 47.4% 11.2%; /* Dark text on secondary */
 
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+  /* Muted Colors (Subtle text, backgrounds) */
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
 
-    /* Sidebar variables */
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 0 0% 98%;
-    --sidebar-primary-foreground: 240 5.9% 10%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+  /* Accent Colors (Highlights, hover states) */
+  --accent: 210 40% 96.1%; /* Default accent from Shadcn (light grey) */
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --accent-hover: 200 40% 90%; /* Added for accent hover (based on previous definition) */
+
+  /* Destructive Colors (Errors, warnings) */
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  /* Border, Input, Ring Colors */
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 240 5.9% 10%;
+
+  /* Border Radius */
+  --radius: 0.5rem;
+
+  /* Sidebar specific colors (pure B&W as per your initial pure definitions) */
+  --sidebar-background: 0 0% 100%; /* Pure White */
+  --sidebar-foreground: 0 0% 0%;    /* Pure Black */
+  --sidebar-primary: 0 0% 0%;        /* Black for sidebar items */
+  --sidebar-primary-foreground: 0 0% 100%; /* White text on sidebar items */
+  --sidebar-accent: 0 0% 90%;        /* Lighter grey for sidebar hover */
+  --sidebar-accent-foreground: 0 0% 0%; /* Black text on sidebar hover */
+  --sidebar-border: 0 0% 0%;         /* Black border for sidebar */
+  --sidebar-ring: 0 0% 0%;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+/* Define CSS Variables for Dark Theme */
+.dark {
+  /* Main Colors */
+  --background: 224 71% 4%; /* Very dark grey/black */
+  --foreground: 210 20% 98%; /* Off-white */
+
+  /* Card Colors */
+  --card: 224 71% 4%; /* Dark card background (same as background) */
+  --card-foreground: 210 20% 98%; /* Text on dark cards (same as foreground) */
+
+  /* Popover Colors */
+  --popover: 224 71.4% 4.1%;
+  --popover-foreground: 210 40% 98%;
+
+  /* Primary Colors (Buttons, Main accents) */
+  --primary: 210 20% 98%; /* Off-white for primary */
+  --primary-foreground: 224 71% 4%; /* Dark text on primary */
+  --primary-hover: 217.2 91.2% 50%; /* Adjusted for primary hover (based on previous definition) */
+
+  /* Secondary Colors */
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+
+  /* Muted Colors (Subtle text, backgrounds) */
+  --muted: 215 27.9% 16.9%;
+  --muted-foreground: 210 20% 98%;
+
+  /* Accent Colors (Highlights, hover states) */
+  --accent: 217.2 32.6% 17.5%; /* Dark gray for accent */
+  --accent-foreground: 210 40% 98%;
+  --accent-hover: 217.2 32.6% 25%; /* Darker gray for accent hover */
+
+  /* Destructive Colors (Errors, warnings) */
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+
+  /* Border, Input, Ring Colors */
+  --border: 216 34% 17%;
+  --input: 216 34% 17%;
+  --ring: 216 34% 17%;
+
+  /* Sidebar specific colors (pure B&W as per your initial pure definitions) */
+  --sidebar-background: 0 0% 0%;    /* Pure Black */
+  --sidebar-foreground: 0 0% 100%;  /* Pure White */
+  --sidebar-primary: 0 0% 100%;     /* White for sidebar items (text) */
+  --sidebar-primary-foreground: 0 0% 0%; /* Black text on sidebar items (button background) */
+  --sidebar-accent: 0 0% 10%;       /* Darker grey for sidebar hover */
+  --sidebar-accent-foreground: 0 0% 100%; /* White text on sidebar hover */
+  --sidebar-border: 0 0% 100%;      /* White border for sidebar */
+  --sidebar-ring: 0 0% 100%;
+}
+
+/* Apply base background and foreground to body */
+body {
+  @apply bg-background text-foreground transition-colors duration-300;
 }

@@ -25,7 +25,7 @@ const coaches: Coach[] = [
 
 // 3. CoachCard component
 const CoachCard: React.FC<{ coach: Coach }> = ({ coach }) => (
-  <div className="flex flex-col md:flex-row bg-card shadow-lg rounded-lg overflow-hidden">
+  <div className="flex flex-col md:flex-row bg-card shadow-lg rounded-lg overflow-hidden ">
     <div className="md:w-1/3">
       <Image
         src="/placeholder.svg"
@@ -60,85 +60,82 @@ const CoachCard: React.FC<{ coach: Coach }> = ({ coach }) => (
   </div>
 );
 
-// 4. Page component
 export default function OneOnOnePage() {
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
-      {/* Theme Toggle */}
-      <div className="absolute top-4 right-4">
-        <ModeToggle />
-      </div>
+    <div className="flex flex-col min-h-screen bg-white text-black dark:bg-background dark:text-foreground relative">
+    
 
-      <div className="container py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4 text-foreground">1-on-1 Consultation</h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Book a private consultation with an expert. One-time fee. No hassle.
-            Just results.
-          </p>
+   <div className="container py-12">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold mb-4 text-foreground">1-on-1 Consultation</h1>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Book a private consultation with an expert. One-time fee. No hassle.
+              Just results.
+            </p>
+          </div>
+  
+          <section className="max-w-7xl mx-auto space-y-12">
+            {/* Intro sections */}
+            <div className="flex flex-col lg:flex-row items-center gap-8">
+              <div className="w-full lg:w-1/2 space-y-4 text-center lg:text-left">
+                <h2 className="text-3xl font-bold text-foreground">Personalized Guidance, Tailored to You</h2>
+                <p className="text-muted-foreground">
+                  Whether you're looking for expert advice, career direction,
+                  emotional support, or personal growth, our 1-on-1 consultations
+                  are designed to give you the focused attention you deserve.
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+                  <li>A session built around your unique goals</li>
+                  <li>Guidance from verified experts</li>
+                  <li>A safe, confidential, and judgment-free environment</li>
+                  <li>Flexible scheduling that fits your lifestyle</li>
+                </ul>
+              </div>
+              <div className="w-full lg:w-1/2 flex justify-center">
+                <Image
+                  src="/placeholder.svg"
+                  alt="Guidance Session"
+                  width={500}
+                  height={300}
+                  className="rounded-lg shadow-md object-cover"
+                />
+              </div>
+            </div>
+  
+            <div className="flex flex-col lg:flex-row items-center gap-8">
+              <div className="w-full lg:w-1/2 flex justify-center">
+                <Image
+                  src="/placeholder.svg"
+                  alt="What You Can Expect"
+                  width={500}
+                  height={300}
+                  className="rounded-lg shadow-md object-cover"
+                />
+              </div>
+              <div className="w-full lg:w-1/2 space-y-4 text-center lg:text-left">
+                <h2 className="text-3xl font-bold text-foreground">What You Can Expect</h2>
+                <p className="text-muted-foreground">
+                  Whether you're looking for expert advice, career direction,
+                  emotional support, or personal growth, our 1-on-1 consultations
+                  are designed to give you the focused attention you deserve.
+                </p>
+                <ul className="space-y-3 text-muted-foreground">
+                  <li className="flex items-center gap-3">✅ A dedicated session built around your unique goals</li>
+                  <li className="flex items-center gap-3">✅ Guidance from verified, experienced experts</li>
+                  <li className="flex items-center gap-3">✅ A safe, confidential, and judgment-free environment</li>
+                  <li className="flex items-center gap-3">✅ Flexible scheduling that fits your lifestyle</li>
+                </ul>
+              </div>
+            </div>
+  
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {coaches.map((coach, idx) => (
+                <CoachCard key={idx} coach={coach} />
+              ))}
+            </div>
+          </section>
         </div>
-
-        <section className="max-w-7xl mx-auto space-y-12">
-          {/* Intro sections */}
-          <div className="flex flex-col lg:flex-row items-center gap-8">
-            <div className="w-full lg:w-1/2 space-y-4 text-center lg:text-left">
-              <h2 className="text-3xl font-bold text-foreground">Personalized Guidance, Tailored to You</h2>
-              <p className="text-muted-foreground">
-                Whether you're looking for expert advice, career direction,
-                emotional support, or personal growth, our 1-on-1 consultations
-                are designed to give you the focused attention you deserve.
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                <li>A session built around your unique goals</li>
-                <li>Guidance from verified experts</li>
-                <li>A safe, confidential, and judgment-free environment</li>
-                <li>Flexible scheduling that fits your lifestyle</li>
-              </ul>
-            </div>
-            <div className="w-full lg:w-1/2 flex justify-center">
-              <Image
-                src="/placeholder.svg"
-                alt="Guidance Session"
-                width={500}
-                height={300}
-                className="rounded-lg shadow-md object-cover"
-              />
-            </div>
-          </div>
-
-          <div className="flex flex-col lg:flex-row items-center gap-8">
-            <div className="w-full lg:w-1/2 flex justify-center">
-              <Image
-                src="/placeholder.svg"
-                alt="What You Can Expect"
-                width={500}
-                height={300}
-                className="rounded-lg shadow-md object-cover"
-              />
-            </div>
-            <div className="w-full lg:w-1/2 space-y-4 text-center lg:text-left">
-              <h2 className="text-3xl font-bold text-foreground">What You Can Expect</h2>
-              <p className="text-muted-foreground">
-                Whether you're looking for expert advice, career direction,
-                emotional support, or personal growth, our 1-on-1 consultations
-                are designed to give you the focused attention you deserve.
-              </p>
-              <ul className="space-y-3 text-muted-foreground">
-                <li className="flex items-center gap-3">✅ A dedicated session built around your unique goals</li>
-                <li className="flex items-center gap-3">✅ Guidance from verified, experienced experts</li>
-                <li className="flex items-center gap-3">✅ A safe, confidential, and judgment-free environment</li>
-                <li className="flex items-center gap-3">✅ Flexible scheduling that fits your lifestyle</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {coaches.map((coach, idx) => (
-              <CoachCard key={idx} coach={coach} />
-            ))}
-          </div>
-        </section>
-      </div>
+  
 
       <Footer />
     </div>

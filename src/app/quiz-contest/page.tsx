@@ -9,17 +9,13 @@ export default function QuizContestPage() {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
-      {/* Theme Toggle */}
-      <div className="absolute top-4 right-4">
-        <ModeToggle />
-      </div>
+    <div className="flex flex-col min-h-screen bg-background text-foreground transition-colors duration-300">
+      
 
-      {/* Main Content */}
       <main className="flex-1 container mx-auto p-6">
         <div className="bg-card p-6 rounded-lg shadow-md space-y-8">
-          {/* Current Week's Quiz */}
-          <section className="bg-primary text-primary-foreground p-6 rounded-lg">
+          {/* This Week's Quiz */}
+          <section className=" p-6 rounded-lg transition-colors">
             <h2 className="text-xl font-bold mb-2">
               Join This Week&apos;s Quiz Contest
             </h2>
@@ -28,21 +24,21 @@ export default function QuizContestPage() {
             <p>Time: 30 mins</p>
             <button
               onClick={() => router.push("/quiz/this-week")}
-              className="mt-4 bg-card text-foreground px-4 py-2 rounded-md hover:bg-card/90 transition"
+              className="mt-4 bg-card text-foreground px-4 py-2 rounded-md hover:bg-muted transition"
             >
               Participate Now
             </button>
           </section>
 
-          {/* Previous Quizzes */}
+          {/* Previous Quizzes Section */}
           <section className="flex flex-col md:flex-row gap-6">
-            {/* Topics Dropdown */}
+            {/* Topic Selector */}
             <div className="w-full md:w-1/4 bg-card p-4 rounded-lg shadow-sm">
               <h2 className="text-xl font-bold mb-2">Choose Topic</h2>
               <select className="w-full p-2 border border-border bg-background text-foreground rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
-                <option>Advanced Arithmetic</option>
-                <option>Mughal History</option>
-                <option>Competitive Exams</option>
+                <option className="bg-card text-card-foreground">Advanced Arithmetic</option>
+                <option className="bg-card text-card-foreground">Mughal History</option>
+                <option className="bg-card text-card-foreground">Competitive Exams</option>
               </select>
             </div>
 
@@ -73,7 +69,7 @@ export default function QuizContestPage() {
                 <div
                   key={quiz.id}
                   className="border-t border-border pt-4 cursor-pointer hover:bg-muted transition"
-                  onClick={() => quiz.route && router.push(quiz.route)}
+                  onClick={() => router.push(quiz.route)}
                 >
                   <h3 className="text-lg font-bold text-foreground">{quiz.title}</h3>
                   <p className="text-muted-foreground">Questions: 20 | Time: 30 mins</p>
@@ -84,7 +80,6 @@ export default function QuizContestPage() {
         </div>
       </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

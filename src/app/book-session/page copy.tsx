@@ -6,25 +6,28 @@ import { ModeToggle } from "@/src/components/mode-toggle";
 import { cn } from '@/src/lib/utils';
 
 export default function BookSessionPage() {
-   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
-    const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
-    const [selectedDate, setSelectedDate] = useState<number | null>(null);
-  
-    const years = Array.from(
-      { length: 10 },
-      (_, i) => new Date().getFullYear() - 5 + i
-    );
-    const months = [
-      "January","February","March","April","May","June",
-      "July","August","September","October","November","December",
-    ];
-    const daysInMonth = (year: number, month: number) => new Date(year, month + 1, 0).getDate();
-  return (
-    <>
-    <div className="min-h-screen bg-white text-black dark:bg-background dark:text-foreground flex items-center justify-center relative">
-   
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
+  const [selectedDate, setSelectedDate] = useState<number | null>(null);
 
-         <div className="w-full mx-auto bg-card rounded-lg shadow-lg p-6">
+  const years = Array.from(
+    { length: 10 },
+    (_, i) => new Date().getFullYear() - 5 + i
+  );
+  const months = [
+    "January","February","March","April","May","June",
+    "July","August","September","October","November","December",
+  ];
+  const daysInMonth = (year: number, month: number) => new Date(year, month + 1, 0).getDate();
+
+  return (
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
+      {/* Theme Toggle */}
+      <div className="absolute top-4 right-4">
+        <ModeToggle />
+      </div>
+
+      <div className="w-full mx-auto bg-card rounded-lg shadow-lg p-6">
         <h2 className="text-lg font-semibold mb-4 text-foreground">Book a Session</h2>
 
         <div className="flex flex-col md:flex-row md:space-x-6">
@@ -106,9 +109,7 @@ export default function BookSessionPage() {
         </div>
       </div>
 
-    
+      <Footer />
     </div>
-    <Footer/>
-    </>
   );
 }

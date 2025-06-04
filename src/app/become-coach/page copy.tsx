@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/src/components/ui/button";
 import { Input } from "@/src/components/ui/input";
 import { Label } from "@/src/components/ui/label";
@@ -22,17 +23,21 @@ import {
   DialogTrigger,
 } from "@/src/components/ui/dialog";
 import Footer from "@/src/components/footer";
+import { ModeToggle } from "@/src/components/mode-toggle";
 
 export default function BecomeCoachPage() {
-    const [isDialogOpen, setIsDialogOpen] = React.useState(false);
-  
+  const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
-      <main className="flex-1 container mx-auto px-4 py-12">
-        <h1 className="text-2xl font-bold mb-4">Become a Coach</h1>
-        {/* Your content goes here */}
+      {/* Theme Toggle */}
+      <div className="absolute top-4 right-4">
+        <ModeToggle />
+      </div>
 
-         <section className="max-w-5xl mx-auto space-y-6">
+      <main className="flex-1 container mx-auto px-4 py-12 space-y-16">
+        {/* Intro Section */}
+        <section className="max-w-5xl mx-auto space-y-6">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-2">
               Join Our Growing Network of Experts
@@ -145,111 +150,123 @@ export default function BecomeCoachPage() {
           </div>
         </section>
 
+        {/* CTA Section */}
         <section className="bg-primary text-primary-foreground rounded-lg p-8 mb-16">
-  <div className="text-center mb-8">
-    <h2 className="text-2xl font-bold mb-2">Ready to Join Our Platform?</h2>
-    <p>
-      Apply now to become a coach and start sharing your expertise with
-      learners worldwide.
-    </p>
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold mb-2">
+              Ready to Join Our Platform?
+            </h2>
+            <p>
+              Apply now to become a coach and start sharing your expertise with
+              learners worldwide.
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button size="lg" variant="secondary">
+                  Become a Coach
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[600px] bg-card text-card-foreground">
+                <DialogHeader>
+                  <DialogTitle>Coach Application</DialogTitle>
+                  <DialogDescription>
+                    Fill out the form below to apply as a coach.
+                  </DialogDescription>
+                </DialogHeader>
+              <form className="grid gap-4 py-4">
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div className="grid gap-2">
+      <Label htmlFor="first-name" className="text-gray-800 dark:text-gray-200">First Name</Label>
+      <Input
+        id="first-name"
+        className="bg-white text-black border border-gray-300 dark:bg-gray-900 dark:text-white dark:border-gray-700"
+      />
+    </div>
+    <div className="grid gap-2">
+      <Label htmlFor="last-name" className="text-gray-800 dark:text-gray-200">Last Name</Label>
+      <Input
+        id="last-name"
+        className="bg-white text-black border border-gray-300 dark:bg-gray-900 dark:text-white dark:border-gray-700"
+      />
+    </div>
   </div>
-  <div className="flex justify-center">
-    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-      <DialogTrigger asChild>
-        <Button size="lg" variant="secondary">Become a Coach</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[600px] bg-card text-card-foreground">
-        <DialogHeader>
-          <DialogTitle>Coach Application</DialogTitle>
-          <DialogDescription>
-            Fill out the form below to apply as a coach.
-          </DialogDescription>
-        </DialogHeader>
-
-        <form className="grid gap-4 py-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="grid gap-2">
-              <Label htmlFor="first-name" className="text-foreground">First Name</Label>
-              <Input id="first-name" className="bg-background text-foreground border border-border" />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="last-name" className="text-foreground">Last Name</Label>
-              <Input id="last-name" className="bg-background text-foreground border border-border" />
-            </div>
-          </div>
-
-          <div className="grid gap-2">
-            <Label htmlFor="email" className="text-foreground">Email</Label>
-            <Input id="email" type="email" className="bg-background text-foreground border border-border" />
-          </div>
-
-          <div className="grid gap-2">
-            <Label htmlFor="phone" className="text-foreground">Phone Number</Label>
-            <Input id="phone" type="tel" className="bg-background text-foreground border border-border" />
-          </div>
-
-          <div className="grid gap-2">
-            <Label htmlFor="expertise" className="text-foreground">Expertise</Label>
-            <Select>
-              <SelectTrigger className="bg-background text-foreground border border-border">
-                <SelectValue placeholder="Select..." />
-              </SelectTrigger>
-              <SelectContent className="bg-background text-foreground">
-                <SelectItem value="therapy">Therapy</SelectItem>
-                <SelectItem value="hr">HR</SelectItem>
-                <SelectItem value="org">Org Dev</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="grid gap-2">
-            <Label htmlFor="experience" className="text-foreground">Experience</Label>
-            <Select>
-              <SelectTrigger className="bg-background text-foreground border border-border">
-                <SelectValue placeholder="Select..." />
-              </SelectTrigger>
-              <SelectContent className="bg-background text-foreground">
-                <SelectItem value="1-3">1-3 yrs</SelectItem>
-                <SelectItem value="4-6">4-6 yrs</SelectItem>
-                <SelectItem value="7+">7+ yrs</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="grid gap-2">
-            <Label htmlFor="bio" className="text-foreground">Professional Bio</Label>
-            <Textarea
-              id="bio"
-              placeholder="Your background..."
-              className="bg-background text-foreground border border-border"
-            />
-          </div>
-
-          <div className="grid gap-2">
-            <Label htmlFor="website" className="text-foreground">Website / LinkedIn</Label>
-            <Input
-              id="website"
-              type="url"
-              className="bg-background text-foreground border border-border"
-            />
-          </div>
-        </form>
-
-        <DialogFooter>
-          <Button type="submit">Submit Application</Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+  <div className="grid gap-2">
+    <Label htmlFor="email" className="text-gray-800 dark:text-gray-200">Email</Label>
+    <Input
+      id="email"
+      type="email"
+      className="bg-white text-black border border-gray-300 dark:bg-gray-900 dark:text-white dark:border-gray-700"
+    />
   </div>
-</section>
+  <div className="grid gap-2">
+    <Label htmlFor="phone" className="text-gray-800 dark:text-gray-200">Phone Number</Label>
+    <Input
+      id="phone"
+      type="tel"
+      className="bg-white text-black border border-gray-300 dark:bg-gray-900 dark:text-white dark:border-gray-700"
+    />
+  </div>
+  <div className="grid gap-2">
+    <Label htmlFor="expertise" className="text-gray-800 dark:text-gray-200">Expertise</Label>
+    <Select>
+      <SelectTrigger className="bg-white text-black border border-gray-300 dark:bg-gray-900 dark:text-white dark:border-gray-700">
+        <SelectValue placeholder="Select..." />
+      </SelectTrigger>
+      <SelectContent className="bg-white dark:bg-gray-900 text-black dark:text-white">
+        <SelectItem value="therapy">Therapy</SelectItem>
+        <SelectItem value="hr">HR</SelectItem>
+        <SelectItem value="org">Org Dev</SelectItem>
+      </SelectContent>
+    </Select>
+  </div>
+  <div className="grid gap-2">
+    <Label htmlFor="experience" className="text-gray-800 dark:text-gray-200">Experience</Label>
+    <Select>
+      <SelectTrigger className="bg-white text-black border border-gray-300 dark:bg-gray-900 dark:text-white dark:border-gray-700">
+        <SelectValue placeholder="Select..." />
+      </SelectTrigger>
+      <SelectContent className="bg-white dark:bg-gray-900 text-black dark:text-white">
+        <SelectItem value="1-3">1-3 yrs</SelectItem>
+        <SelectItem value="4-6">4-6 yrs</SelectItem>
+        <SelectItem value="7+">7+ yrs</SelectItem>
+      </SelectContent>
+    </Select>
+  </div>
+  <div className="grid gap-2">
+    <Label htmlFor="bio" className="text-gray-800 dark:text-gray-200">Professional Bio</Label>
+    <Textarea
+      id="bio"
+      placeholder="Your background..."
+      className="bg-white text-black border border-gray-300 dark:bg-gray-900 dark:text-white dark:border-gray-700"
+    />
+  </div>
+  <div className="grid gap-2">
+    <Label htmlFor="website" className="text-gray-800 dark:text-gray-200">Website / LinkedIn</Label>
+    <Input
+      id="website"
+      type="url"
+      className="bg-white text-black border border-gray-300 dark:bg-gray-900 dark:text-white dark:border-gray-700"
+    />
+  </div>
+</form>
 
- {/* FAQ Section */}
+                <DialogFooter>
+                  <Button type="submit">Submit Application</Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
         <section className="text-center mb-12">
           <h2 className="text-2xl font-bold mb-4">
             Frequently Asked Questions
           </h2>
         </section>
- <section className="grid gap-8 md:grid-cols-2">
+        <section className="grid gap-8 md:grid-cols-2">
           {[
             {
               q: "What qualifications?",
@@ -273,11 +290,10 @@ export default function BecomeCoachPage() {
             </div>
           ))}
         </section>
-
-        
       </main>
 
-        <Footer />
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

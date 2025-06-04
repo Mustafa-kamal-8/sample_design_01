@@ -1,17 +1,12 @@
+// app/discussion-forum/page.tsx
 'use client';
 
 import React from "react";
-import Footer from '@/src/components/footer';
-import { ModeToggle } from '@/src/components/mode-toggle';
+import Footer from '@/src/components/footer'; // Ensure this path is correct
 
 export default function DiscussionForum() {
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
-      {/* Theme Toggle */}
-      <div className="absolute top-4 right-4">
-        <ModeToggle />
-      </div>
-
+    <> {/* Using a React Fragment to wrap the content */}
       <main className="flex-1 max-w-7xl mx-auto p-6 space-y-10">
         {/* Header */}
         <div className="text-center mb-6">
@@ -35,7 +30,7 @@ export default function DiscussionForum() {
 
         {/* Posts List */}
         {[
-          { title: 'Gen Arithmetics \u005C\u006Dm/ · 7m ago', hasImage: false },
+          { title: 'Gen Arithmetics \\m/ · 7m ago', hasImage: false },
           { title: 'Indian Scr Gr · 15m ago', hasImage: true },
           { title: 'Gen Arithmetics 7m ago', hasImage: false },
         ].map((post, idx) => (
@@ -81,6 +76,6 @@ export default function DiscussionForum() {
 
       {/* Footer */}
       <Footer />
-    </div>
+    </>
   );
 }

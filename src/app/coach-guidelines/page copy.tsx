@@ -1,12 +1,11 @@
-"use client";
-
-import React from "react";
 import Link from "next/link";
 import { Button } from "@/src/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/src/components/ui/tabs";
 import Footer from "@/src/components/footer";
+import { ModeToggle } from "@/src/components/mode-toggle";
+
 export default function CoachGuidelinesPage() {
-   const coachData = [
+  const coachData = [
     {
       title: "Licensed Therapists",
       description:
@@ -26,11 +25,14 @@ export default function CoachGuidelinesPage() {
       image: "/placeholder.svg",
     },
   ];
+
   return (
-    <>
-    <div className="min-h-screen bg-white text-black dark:bg-background dark:text-foreground flex items-center justify-center relative">
-      {/* Theme Toggle Button */}
-      
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
+      {/* Theme Toggle */}
+      <div className="absolute top-4 right-4">
+        <ModeToggle />
+      </div>
+
       <main className="flex-1 container mx-auto px-4 py-12 space-y-8">
         <div className="max-w-4xl mx-auto text-center space-y-4">
           <h1 className="text-4xl font-bold">Coach Guidelines</h1>
@@ -127,9 +129,7 @@ export default function CoachGuidelinesPage() {
 
         </Tabs>
       </main>
-      
-    </div>
       <Footer />
-</>
+    </div>
   );
 }
